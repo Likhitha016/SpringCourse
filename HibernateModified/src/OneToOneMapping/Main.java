@@ -4,24 +4,23 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import Entity.Course;
 import Entity.Instructor;
 import Entity.InstructorDetail;
+import Entity.Review;
+import Entity.Student;
+import SessionCreation.SessionFactoryCreation;
 
 
 public class Main {
 
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration()
-				.configure("hibernate.cfg.xml")
-				.addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetail.class)
-				.buildSessionFactory();
-
+		SessionFactory factory =SessionFactoryCreation.connect();
 		Session session = factory.getCurrentSession();
 		try {
-			InstructorDetail tempInstructorDetail =new InstructorDetail("joe.com/youtube",
-					"Singing!!!");	
-			Instructor tempInstructor = new Instructor("Joe", "Darby", "Joe@gmail.com");
+			InstructorDetail tempInstructorDetail =new InstructorDetail("david.com/youtube",
+					"Artist");	
+			Instructor tempInstructor = new Instructor("john", "Johnson", "david@gmail.com");
 			
 			tempInstructor.setInstructorDetail(tempInstructorDetail);
 			session.beginTransaction();

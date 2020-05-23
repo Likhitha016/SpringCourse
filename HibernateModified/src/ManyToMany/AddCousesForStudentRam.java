@@ -9,17 +9,12 @@ import Entity.Instructor;
 import Entity.InstructorDetail;
 import Entity.Review;
 import Entity.Student;
+import SessionCreation.SessionFactoryCreation;
 
 public class AddCousesForStudentRam {
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration()
-								.configure("hibernate.cfg.xml")
-								.addAnnotatedClass(Instructor.class)
-								.addAnnotatedClass(InstructorDetail.class)
-								.addAnnotatedClass(Course.class)
-								.addAnnotatedClass(Review.class)
-								.addAnnotatedClass(Student.class)
-								.buildSessionFactory();
+
+		SessionFactory factory =SessionFactoryCreation.connect();
 		Session session = factory.getCurrentSession();
 		
 		try {			

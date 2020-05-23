@@ -7,15 +7,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import Entity.Student;
+import SessionCreation.SessionFactoryCreation;
 
 public class QueryStudentDemo {
 
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration()
-				.configure("hibernate.cfg.xml")
-				.addAnnotatedClass(Student.class)
-				.buildSessionFactory();
-
+		SessionFactory factory =SessionFactoryCreation.connect();
 		Session session = factory.getCurrentSession();
 		try {			
 			

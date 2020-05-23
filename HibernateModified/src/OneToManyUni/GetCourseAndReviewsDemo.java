@@ -8,18 +8,14 @@ import Entity.Course;
 import Entity.Instructor;
 import Entity.InstructorDetail;
 import Entity.Review;
+import Entity.Student;
+import SessionCreation.SessionFactoryCreation;
 
 public class GetCourseAndReviewsDemo {
 	public static void main(String[] args) {
 
 		// create session factory
-		SessionFactory factory = new Configuration()
-								.configure("hibernate.cfg.xml")
-								.addAnnotatedClass(Instructor.class)
-								.addAnnotatedClass(InstructorDetail.class)
-								.addAnnotatedClass(Course.class)
-								.addAnnotatedClass(Review.class)
-								.buildSessionFactory();
+		SessionFactory factory =SessionFactoryCreation.connect();
 		Session session = factory.getCurrentSession();
 		
 		try {			

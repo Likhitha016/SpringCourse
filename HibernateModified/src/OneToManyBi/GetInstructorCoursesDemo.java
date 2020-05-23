@@ -7,16 +7,12 @@ import org.hibernate.cfg.Configuration;
 import Entity.Course;
 import Entity.Instructor;
 import Entity.InstructorDetail;
+import SessionCreation.SessionFactoryCreation;
 
 public class GetInstructorCoursesDemo {
 
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration()
-								.configure("hibernate.cfg.xml")
-								.addAnnotatedClass(Instructor.class)
-								.addAnnotatedClass(InstructorDetail.class)
-								.addAnnotatedClass(Course.class)
-								.buildSessionFactory();
+		SessionFactory factory =SessionFactoryCreation.connect();
 		Session session = factory.getCurrentSession();
 		
 		try {			
